@@ -1,0 +1,9 @@
+{% extends 'rent/base.html' %}
+{% block content %}
+<div class="container card mt-5 shadow p-3">
+    <p><strong>vehicle_type</strong>: {{ vehicle.vehicle_type }}</p>
+    <p><strong>vehicle_size</strong>: {{ vehicle.vehicle_size }}</p>
+    <p><strong>real_cost</strong>: {{ vehicle.real_cost }}</p>
+    <p><strong>date_created</strong>: {{ vehicle.date_created }}</p>
+</div>
+{% endblock content %}

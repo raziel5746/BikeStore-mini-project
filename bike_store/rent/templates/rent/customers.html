@@ -1,0 +1,26 @@
+{% extends 'rent/base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row" style="width: 100%;">
+        <div class="column card-deck justify-content-center">
+            {% for customer in customers %}
+            <div class="card shadow mx-auto mb-5 p-4" style="flex: 0 0 550px">
+                <a href="{% url 'mycustomer' id=customer.id %}" class="text-decoration-none stretched-link">
+                </a>
+                    <p><strong><u>First name</u></strong>: {{ customer.first_name }}</p>
+                    <p><strong><u>Last name</u></strong>: {{ customer.last_name }}</p>
+                    <p><strong><u>Email</u></strong>: {{ customer.email }}</p>
+                    <p><strong><u>Phone number</u></strong>: {{ customer.phone_number }}</p>
+                    <p><strong><u>Address</u></strong>: {{ customer.address }}</p>
+                    <p><strong><u>City</u></strong>: {{ customer.city }}</p>
+                    <p><strong><u>Country</u></strong>: {{ customer.country }}</p>
+                    <a href="{% url 'addrental' customer.id %}" class="btn btn-primary shadow-sm" style="line-height: 60px; font-size: 4rem; z-index: 3; position: absolute; right: 15px; bottom: 15px; border-radius: 50%; height: 80px; width: 80px;">
+                        +
+                    </a>
+            </div>
+            
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

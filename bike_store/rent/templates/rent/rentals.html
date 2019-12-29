@@ -1,0 +1,46 @@
+{% extends 'rent/base.html' %}
+{% block content %}
+<a href="{% url 'addrental' 0 %}" class="btn-lg btn-primary m-3"
+    style="position: fixed; top: 90px; left: 5px; z-index: 2;">Add a rental</a>
+<br>
+<br>
+<div class="container" style="max-width: 1500px; padding-left: 200px; padding-right: 200px;">
+    <div class="row" style="width: 100%;">
+        <div class="column card-deck justify-content-center">
+            {% for rental in all_rentals %}
+            <div class="card shadow rounded p-3 m-4" style="width: 300px; flex: 0 0 300px; {% if rental.return_date == None %}
+                                            background-color: moccasin
+                                         {% else %}
+                                            background-color: ghostwhite
+                                         {% endif %}">
+                <a href="{% url 'myrental' id=rental.id %}" class="text-decoration-none stretched-link">
+                </a>
+                <p>
+                    <strong><u>Customer</u></strong>: {{ rental.customer }}
+                </p>
+                <p>
+                    <strong><u>Vehicle</u></strong>: {{ rental.vehicle }}
+                </p>
+                <p>
+                    <strong><u>Rental date</u></strong>: {{ rental.rental_date }}
+                </p>
+                <p>
+                    <strong><u>Return date</u></strong>:
+                    {% if rental.return_date == None %}
+                        <span class="text-muted"> Not yet returned</span>
+                    {% else %}
+                        {{ rental.return_date }}
+                    {% endif %}
+                </p>
+                {% if rental.return_date == None %}
+                    <a href="{% url 'returnvehicle' id=rental.id %}" class="btn btn-primary" style="z-index: 3; position: absolute; right: 0px; bottom: 0px;">
+                        Return
+                    </a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<br>
+{% endblock content %}

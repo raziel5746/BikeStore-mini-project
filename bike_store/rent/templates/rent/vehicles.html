@@ -1,0 +1,29 @@
+{% extends 'rent/base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row" style="width: 100%;">
+        {% for vehicle_type in vt %}
+        <div class="column card-deck justify-content-center">
+                <h2 style="width: 100%; text-align: center;" class="mt-4"><u>{{ vehicle_type.0.vehicle_type }}s</u></h2>
+                {% for vehicle in vehicle_type %}
+                    <a href="{% url 'myvehicle' id=vehicle.id %}" class="text-decoration-none">
+                        <div class="card shadow p-3 m-4" style="width: 300px;">
+                            <p><strong><u>Type</u></strong>: {{ vehicle.vehicle_type }}</p>
+                            <p><strong><u>Size</u></strong>: {{ vehicle.vehicle_size }}</p>
+                            <p><strong><u>Date created</u></strong>: {{ vehicle.date_created }}</p>
+                            <p><strong><u>Real cost</u></strong>: {{ vehicle.real_cost }}</p>
+                        </div>
+                    </a>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock content %}
